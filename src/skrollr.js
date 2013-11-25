@@ -276,7 +276,11 @@
 		//disableMobile is false by default
 		_disableMobile = options.disableMobile || false;
 
-		if(_isMobile && !_disableMobile) {
+		if(_isMobile && _disableMobile) {
+			_instance.refresh();
+			_render();
+			return;
+		} else if(_isMobile) {
 			_skrollrBody = document.getElementById('skrollr-body');
 
 			//Detect 3d transform if there's a skrollr-body (only needed for #skrollr-body).
